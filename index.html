@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Stapp-Handball</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Stapp-Handball</h1>
+            <p>シュート率計算プログラム</p>
+        </header>
+        <section class="card">
+        <form id="form">
+            <div class="form-group">
+            <label for="team" class="form-label">チーム名:</label>
+            <input type="text" id="team" name="team" required class="form-control">
+            </div>
+            <div class="form-group">
+            <label class="form-label" for="player">選手名:</label>
+            <input type="text" id="player" class="form-control" name="player" required>
+            </div>
+            <div class="form-group">
+            <label for="position" class="form-label">ポジション:</label>
+            <select id="position" name="position" required class="form-control">
+                <option value="GK">ゴールキーパー</option>
+                <option value="SS">正サイド</option>
+                <option value="GS">逆サイド</option>
+                <option value="SF">正45</option>
+                <option value="GF">逆45</option>
+                <option value="CB">センター</option>
+                <option value="PS">ポスト</option>
+            </select>
+            </div>
+            <div class="form-group">
+            <label for="shots" class="form-label">シュート数:</label>
+            <input type="number" id="shots" class="form-control" name="shots" required>
+            </div>
+            <div class="form-group">
+            <label for="goals" class="form-label">ゴール数:</label>
+            <input class="form-control" type="number" id="goals" name="goals" required>
+            </div>
+            <button type="submit" class="btn btn-primary">計算</button>
+        </form>
+        </section>
+    </body>
+</html>

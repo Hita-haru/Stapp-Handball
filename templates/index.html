@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Stapp-Handball</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <header>
+            <h1>Stapp-Handball</h1>
+            <p>シュート率計算プログラム</p>
+        </header>
+        <section class="card">
+        <form id="form">
+            <div class="form-group">
+            <label for="shots" class="form-label">シュート数:</label>
+            <div class="input-group">
+                <button type="button" class="btn btn-primary" onclick="increment('shots')">増やす</button>
+                <button type="button" class="btn btn-primary" onclick="decrement('shots')">減らす</button>
+                <input type="number" id="shots" class="form-control" name="shots" value="0" required>
+            </div>
+            </div>
+            <div class="form-group">
+            <label for="goals" class="form-label">ゴール数:</label>
+            <div class="input-group">
+                <button type="button" class="btn btn-primary" onclick="increment('goals')">増やす</button>
+                <button type="button" class="btn btn-primary" onclick="decrement('goals')">減らす</button>
+                <input class="form-control" type="number" id="goals" name="goals" value="0" required>
+            </div>
+            </div>
+            <button type="submit" class="btn btn-primary">計算</button>
+        </form>
+        </section>
+        <section class="card" id="result-container" style="display: none;">
+            <h2>計算結果</h2>
+            <p id="result-text"></p>
+        </section>
+        <script>
+            function increment(field) {
+                const input = document.getElementById(field);
+                input.value = parseInt(input.value) + 1;
+            }
+
+            function decrement(field) {
+                const input = document.getElementById(field);
+                const value = parseInt(input.value);
+                if (value > 0) {
+                    input.value = value - 1;
+                }
+            }
+
+            const form = document.getElementById('form');
+            const resultContainer = document.getElementById('result-container');
+            const resultText = document.getElementById('result-text');
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const formData = new FormData(form);
+                const data = new URLSearchParams(formData);
+
+                const response = await fetch('/calculate', {
+                    method: 'POST',
+                    body: data
+                });
+
+                const result = await response.json();
+
+                resultText.textContent = `シュート率: ${result.result}%`;
+                resultContainer.style.display = 'block';
+            });
+        </script>
+    </body>
+</html>

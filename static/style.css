@@ -245,3 +245,23 @@ header a, footer a {
     padding: 1rem 0;
   }
 }
+
+/* Input Group for +/- buttons */
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.input-group .form-control {
+    text-align: center;
+    /* Do not allow the input to grow or shrink */
+    flex: 0 0 80px;
+    margin: 0 0.5rem;
+}
+
+.input-group .btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 1.2rem;
+    line-height: 1;
+}

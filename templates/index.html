@@ -9,27 +9,102 @@
     <body>
         <header>
             <h1>Stapp-Handball</h1>
-            <p>シュート率計算プログラム</p>
+            <p>シュート集計プログラム</p>
         </header>
         <section class="card">
         <form id="form">
             <div class="form-group">
-            <label for="shots" class="form-label">シュート数:</label>
-            <div class="input-group">
-                <button type="button" class="btn btn-primary" onclick="increment('shots')">増やす</button>
-                <button type="button" class="btn btn-primary" onclick="decrement('shots')">減らす</button>
-                <input type="number" id="shots" class="form-control" name="shots" value="0" required>
-            </div>
+                <label for="team" class="form-label">チーム名:</label>
+                <input type="text" id="team" class="form-control" name="team" required>
             </div>
             <div class="form-group">
-            <label for="goals" class="form-label">ゴール数:</label>
-            <div class="input-group">
-                <button type="button" class="btn btn-primary" onclick="increment('goals')">増やす</button>
-                <button type="button" class="btn btn-primary" onclick="decrement('goals')">減らす</button>
-                <input class="form-control" type="number" id="goals" name="goals" value="0" required>
+                <label for="player" class="form-label">選手名:</label>
+                <input type="text" id="player" class="form-control" name="player" required>
             </div>
+            <div class="form-group">
+                <label for="position" class="form-label">ポジション:</label>
+                <select id="position" class="form-control" name="position" required>
+                    <option value="GK">ゴールキーパー</option>
+                    <option value="CE">センター</option>
+                    <option value="PS">ポスト</option>
+                    <option value="FS">正サイド</option>
+                    <option value="BS">逆サイド</option>
+                    <option value="SF">正45</option>
+                    <option value="BF">逆45</option>
+                    <option value="OT">その他</option>
+                </select>
             </div>
-            <button type="submit" class="btn btn-primary">計算</button>
+            <div class="form-group">
+                <label for="shotlb" class="form-label">左下シュート</label>
+                <div class="input-group">
+                    <button type="button" class="btn btn-secondary" onclick="decrement('shotlb')">-</button>
+                    <input type="number" id="shotlb" class="form-control" name="shotlb" value="0" required>
+                    <button type="button" class="btn btn-secondary" onclick="increment('shotlb')">+</button>
+                </div>
+                <label for="goallb" class="form-label">左下ゴール</label>
+                 <div class="input-group">
+                    <button type="button" class="btn btn-secondary" onclick="decrement('goallb')">-</button>
+                    <input type="number" id="goallb" class="form-control" name="goallb" value="0" required>
+                    <button type="button" class="btn btn-secondary" onclick="increment('goallb')">+</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="shotlt" class="form-label">左上シュート</label>
+                <div class="input-group">
+                    <button type="button" class="btn btn-secondary" onclick="decrement('shotlt')">-</button>
+                    <input type="number" id="shotlt" class="form-control" name="shotlt" value="0" required>
+                    <button type="button" class="btn btn-secondary" onclick="increment('shotlt')">+</button>
+                </div>
+                <label for="goallt" class="form-label">左上ゴール</label>
+                <div class="input-group">
+                    <button type="button" class="btn btn-secondary" onclick="decrement('goallt')">-</button>
+                    <input type="number" id="goallt" class="form-control" name="goallt" value="0" required>
+                    <button type="button" class="btn btn-secondary" onclick="increment('goallt')">+</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="shotc" class="form-label">中央シュート</label>
+                <div class="input-group">
+                    <button type="button" class="btn btn-secondary" onclick="decrement('shotc')">-</button>
+                    <input type="number" id="shotc" class="form-control" name="shotc" value="0" required>
+                    <button type="button" class="btn btn-secondary" onclick="increment('shotc')">+</button>
+                </div>
+                <label for="goalc" class="form-label">中央ゴール</label>
+                <div class="input-group">
+                    <button type="button" class="btn btn-secondary" onclick="decrement('goalc')">-</button>
+                    <input type="number" id="goalc" class="form-control" name="goalc" value="0" required>
+                    <button type="button" class="btn btn-secondary" onclick="increment('goalc')">+</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="shotrb" class="form-label">右下シュート</label>
+                <div class="input-group">
+                    <button type="button" class="btn btn-secondary" onclick="decrement('shotrb')">-</button>
+                    <input type="number" id="shotrb" class="form-control" name="shotrb" value="0" required>
+                    <button type="button" class="btn btn-secondary" onclick="increment('shotrb')">+</button>
+                </div>
+                <label for="goalrb" class="form-label">右下ゴール</label>
+                <div class="input-group">
+                    <button type="button" class="btn btn-secondary" onclick="decrement('goalrb')">-</button>
+                    <input type="number" id="goalrb" class="form-control" name="goalrb" value="0" required>
+                    <button type="button" class="btn btn-secondary" onclick="increment('goalrb')">+</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="shotrt" class="form-label">右上シュート</label>
+                <div class="input-group">
+                    <button type="button" class="btn btn-secondary" onclick="decrement('shotrt')">-</button>
+                    <input type="number" id="shotrt" class="form-control" name="shotrt" value="0" required>
+                    <button type="button" class="btn btn-secondary" onclick="increment('shotrt')">+</button>
+                </div>
+                <label for="goalrt" class="form-label">右上ゴール</label>
+                <div class="input-group">
+                    <button type="button" class="btn btn-secondary" onclick="decrement('goalrt')">-</button>
+                    <input type="number" id="goalrt" class="form-control" name="goalrt" value="0" required>
+                    <button type="button" class="btn btn-secondary" onclick="increment('goalrt')">+</button>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">集計して保存</button>
         </form>
         </section>
         <section class="card" id="result-container" style="display: none;">
@@ -39,6 +114,7 @@
         <script>
             function increment(field) {
                 const input = document.getElementById(field);
+                if (!input.value) input.value = 0;
                 input.value = parseInt(input.value) + 1;
             }
 
@@ -58,16 +134,32 @@
                 e.preventDefault();
 
                 const formData = new FormData(form);
-                const data = new URLSearchParams(formData);
+                const data = {};
+                formData.forEach((value, key) => {
+                    data[key] = value;
+                });
 
-                const response = await fetch('/calculate', {
+                const response = await fetch('/submit_data', {
                     method: 'POST',
-                    body: data
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
                 });
 
                 const result = await response.json();
 
-                resultText.textContent = `シュート率: ${result.result}%`;
+                if(response.ok) {
+                    resultText.innerHTML = `
+                        合計シュート数: ${result.total_shots}<br>
+                        合計ゴール数: ${result.total_goals}<br>
+                        シュート率: <strong>${result.result}%</strong><br>
+                        <small style="color: #03dac6;">データは正常に保存されました。</small>
+                    `;
+                } else {
+                    resultText.textContent = `エラー: ${result.error}`;
+                }
+
                 resultContainer.style.display = 'block';
             });
         </script>
